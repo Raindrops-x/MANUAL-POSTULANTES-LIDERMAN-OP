@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Manual Interactivo - Registro de Postulante Liderman</title>
+  <link rel="icon" type="image/png" href="./img/favicon/liderman.png">
+  <link rel="stylesheet" href="./estilos.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">LIDERMAN <span>· MANUAL OPERATIVO</span></div>
+    <div class="contador-header" id="contadorHeader">
+      <span id="textoPasoHeader">INTRO</span>
+    </div>
+    <button class="btn-intro" onclick="irAlInicio()">INTRO</button>
+  </header>
+
+  <section id="portada">
+    <h1>MANUAL DE <span>REGISTRO</span><br>DE POSTULANTE</h1>
+    <div class="subtitulo">REGISTRO EN PLATAFORMA · LIDERMAN</div>
+    <p>Guía interactiva paso a paso para completar tu legajo virtual en la plataforma de postulantes de Liderman antes de tu incorporación.</p>
+    <button id="btnIniciar" onclick="iniciarManual()">▶ INICIAR MANUAL</button>
+
+    <div id="cajaTexto">
+      <p class="intro-bienvenida">
+        Bienvenido a la familia Liderman. Ahora es turno de completar tu legajo virtual.
+        En los siguientes pasos te mostraremos cómo completarlo y qué documentos necesitas.
+      </p>
+      <p class="intro-recomendacion">
+        📌 <strong>Antes de empezar:</strong> Asegúrate de contar con buena conexión a internet (de preferencia usa una computadora) y ten a la mano los siguientes documentos:
+      </p>
+
+      <ul class="lista-documentos">
+        <li><a href='https://postulantes.liderman.org/login' target='_blank' rel='noopener noreferrer'><b>https://postulantes.liderman.org/login</b></a> Pagina de inicio</li>
+        <li><strong>CV</strong> actualizado</li>
+        <li><strong>DNI</strong> vigente</li>
+        <li><strong>Certificado Único Laboral</strong> (CUL)</li>
+        <li><strong>Certificados de estudios</strong></li>
+        <li><strong>Certificados de trabajo</strong> anteriores</li>
+        <li><strong>Croquis y foto</strong> de tu domicilio</li>
+        <li><strong>DNI de hijos menores</strong> (si aplica)</li>
+        
+      </ul>
+    </div>
+  </section>
+
+  <section id="carrusel">
+    <div class="paso-grid" id="pasoGrid">
+      <div class="paso-info">
+        <h2 class="paso-titulo" id="pasoTitulo">INGRESAR AL APLICATIVO</h2>
+        <div class="paso-desc-corta" id="pasoDescCorta"></div>
+      </div>
+      <div class="paso-imagen-container" id="pasoMediaContainer">
+        <!-- Contenido multimedia dinámico -->
+      </div>
+    </div>
+
+    <div class="dots" id="dots"></div>
+  </section>
+
+  <section id="cierre" style="display: none;">
+    <h1>¡REGISTRO <span>COMPLETADO</span>!</h1>
+    <div class="subtitulo">PROCESO FINALIZADO · LIDERMAN</div>
+    <p>Has revisado exitosamente todos los pasos para la carga de tu legajo virtual.</p>
+    <button id="btnReiniciar" onclick="irAlInicio()">⟲ REINICIAR MANUAL</button>
+
+    <div id="cajaTextoCierre">
+      <p class="cierre-agradecimiento">
+        ¡Excelente trabajo! Tu información y documentos serán validados por el área de <strong>Gestión Documental</strong>.
+      </p>
+      <p class="cierre-recomendacion">
+        ✅ <strong>Siguientes pasos recomendados:</strong>
+      </p>
+
+      <ul class="lista-documentos">
+        <li>Mantente atento a tu <strong>correo electrónico</strong> y teléfono de contacto registrado.</li>
+        <li>Asegúrate de haber adjuntado la <strong>Documentacion solicitada</strong> clara y legible.</li>
+        <li>Si tu reclutador te solicita subsanar alguna observación, ingresa nuevamente con tu usuario a la plataforma.</li>
+      </ul>
+
+      <div class="mensaje-final-liderman">
+        ¡Te deseamos el mayor de los éxitos en esta nueva etapa formando parte de la gran familia Liderman!
+      </div>
+    </div>
+  </section>
+
+  <div id="controles">
+    <div class="nav-botones">
+      <div class="inicio-control">
+        <button class="icono" onclick="irAlInicio()" title="Ir al Inicio">⟲</button>
+      </div>
+      <div class="pasos-controles">
+        <button class="icono" onclick="pasoAnterior()" title="Anterior">‹</button>
+        <button class="icono play" id="btnPlay" onclick="manejarBotonPlay()" title="Reproducir / Iniciar">▶</button>
+        <button class="icono" onclick="pasoSiguiente()" title="Siguiente">›</button>
+      </div>
+    </div>
+    <div id="barra"><div id="barraProgreso"></div></div>
+    <div class="opciones-botones">
+      <div class="volumen-control" id="volumenControl">
+        <button class="icono" id="btnVolumen" onclick="togglePanelVolumen()" title="Mostrar control de volumen" aria-expanded="false" aria-controls="controlVolumen">🔊</button>
+        <input id="controlVolumen" type="range" min="0" max="1" step="0.05" value="1" oninput="cambiarVolumen(this.value)" aria-label="Volumen de la narración" title="Volumen de la narración">
+      </div>
+      <button class="icono" id="btnNarracion" onclick="toggleNarracion()" title="Iniciar Guía Narrada">GUÍA NARRADA</button>
+    </div>
+  </div>
+
+  <div id="avisoModoAutomatico" class="aviso-modo-automatico" display: none role="status" aria-live="polite" hidden>
+    <span>Modo automático activo</span>
+    <button type="button" onclick="detenerModoAutomatico()">Detener</button>
+  </div>
+
+  <div id="visorImagen" class="visor-imagen" aria-hidden="true">
+    <button id="cerrarVisor" class="cerrar-visor" type="button" aria-label="Cerrar imagen ampliada" title="Cerrar">×</button>
+    <img id="imagenAmpliada" src="" alt="">
+  </div>
+
+  <script src="./manual.js"></script>
+</body>
+</html>

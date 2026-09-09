@@ -1,0 +1,9 @@
+titulo Condiciones laborales y DJ de huellas dactilares,
+        descCorta `
+          ul class=lista-paso-desc
+            listrongCondiciones laboralesstrong Formato donde se consigna tu estructura salarial, la cual debe ser proporcionado por tu reclutador y firmada por tu persona.li
+            listrongDJ de huellas dactilaresstrong Formato descargable para que sea impreso y llenado a mano, para luego ser subido a la web.li
+          ul
+        `,
+        texto Descarga la declaración jurada de autenticidad dactilar, imprímela, complétala a mano con tu firma y huella dactilar, y súbela a la plataforma. Con esto tu registro quedará finalizado y será revisado por el área de gestión documental.,
+        img [imgpaso21_1.png, imgpaso21_2.png]
