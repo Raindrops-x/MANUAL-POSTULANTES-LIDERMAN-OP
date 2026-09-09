@@ -9,7 +9,7 @@ El backend se encuentra en `use/app.py` y utiliza Google Cloud TTS para generar 
 Desde la carpeta principal del proyecto, ejecuta:
 
 ```powershell
-py -m pip install fastapi uvicorn edge-tts requests python-dotenv
+py -m pip install fastapi uvicorn requests python-dotenv
 ```
 
 ### Iniciar el servidor
